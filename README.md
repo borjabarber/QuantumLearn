@@ -72,6 +72,9 @@ Dependiendo de la opción seleccionada, la aplicación:
 4. **Formatea la respuesta** para mejorar la legibilidad.
 5. **Muestra el resultado** en la interfaz de usuario.
 
+### 5. Formateo de Respuestas
+La función `format_response(text)` se encarga de limpiar y dar formato a la respuesta generada por el modelo. Si la salida es JSON, intenta formatearla adecuadamente.
+
 
 ## 📂 Descripción de Carpetas  
 
@@ -102,8 +105,7 @@ Dependiendo de la opción seleccionada, la aplicación:
 
 
 
-### 5. Formateo de Respuestas
-La función `format_response(text)` se encarga de limpiar y dar formato a la respuesta generada por el modelo. Si la salida es JSON, intenta formatearla adecuadamente.
+
 
 
 
