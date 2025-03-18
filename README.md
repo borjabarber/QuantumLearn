@@ -38,6 +38,32 @@ streamlit run app.py
 Para usar el codigo se necesita una APIKEY de OpenAI.
 ----
 
+## 📂 Descripción de Carpetas  
+
+📦 QuantumLearn   
+├── 📂 drafts/ # 📜 Borradores y documentación en desarrollo   
+├── 📂 sistema_multi_agentes/ # 🤖 Código del sistema multiagente   
+├── 📂 streamlit/ # 🎨 Interfaz gráfica en Streamlit   
+├── 📜 LICENSE # 📄 Licencia del proyecto   
+├── 📜 README.md # 📘 Documentación principal  
+  
+- **`drafts/`** 📜  
+  Contiene documentos, ideas y versiones preliminares de código o especificaciones.  
+
+- **`sistema_multi_agentes/`** 🤖  
+  Carpeta principal con el código del sistema multiagente que gestiona las funcionalidades de la IA.  
+
+- **`streamlit/`** 🎨    
+  Incluye la interfaz gráfica del proyecto, desarrollada con **Streamlit** para interacción con los usuarios.  
+
+- **`LICENSE`** 📄  
+  Archivo que especifica los términos de uso y distribución del código.
+
+- **`README.md`** 📘  
+  Este archivo, donde se explica la finalidad del proyecto, su instalación y uso.
+
+----
+
 
 ## Estructura del Código
 ### 1. Configuración Inicial
@@ -76,29 +102,7 @@ Dependiendo de la opción seleccionada, la aplicación:
 La función `format_response(text)` se encarga de limpiar y dar formato a la respuesta generada por el modelo. Si la salida es JSON, intenta formatearla adecuadamente.
 
 
-## 📂 Descripción de Carpetas  
 
-📦 QuantumLearn   
-├── 📂 drafts/ # 📜 Borradores y documentación en desarrollo   
-├── 📂 sistema_multi_agentes/ # 🤖 Código del sistema multiagente   
-├── 📂 streamlit/ # 🎨 Interfaz gráfica en Streamlit   
-├── 📜 LICENSE # 📄 Licencia del proyecto   
-├── 📜 README.md # 📘 Documentación principal  
-  
-- **`drafts/`** 📜  
-  Contiene documentos, ideas y versiones preliminares de código o especificaciones.  
-
-- **`sistema_multi_agentes/`** 🤖  
-  Carpeta principal con el código del sistema multiagente que gestiona las funcionalidades de la IA.  
-
-- **`streamlit/`** 🎨    
-  Incluye la interfaz gráfica del proyecto, desarrollada con **Streamlit** para interacción con los usuarios.  
-
-- **`LICENSE`** 📄  
-  Archivo que especifica los términos de uso y distribución del código.
-
-- **`README.md`** 📘  
-  Este archivo, donde se explica la finalidad del proyecto, su instalación y uso.
 
 ---
 
