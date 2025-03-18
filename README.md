@@ -3,7 +3,7 @@
 Tu ecosistema multiagente para dominar la ciencia de datos.
 
 ## Descripción General
-Este proyecto es una aplicación web desarrollada con **Streamlit** que funciona para dar apoyo a los estudiantes de **Data Science**. Utiliza la librería **CrewAI** para la gestión de agentes de inteligencia artificial especializados en diversas tareas, tales como:
+Este proyecto es una aplicación web desarrollada con **Streamlit** que funciona para dar apoyo a los estudiantes de **Data Science**. Utiliza la librería **CrewAI** para la creacion y gestión de un equipo de multi agentes de inteligencia artificial especializados en diversas tareas, tales como:
 
 - Generación de exámenes
 - Evaluación de respuestas
@@ -11,7 +11,7 @@ Este proyecto es una aplicación web desarrollada con **Streamlit** que funciona
 - Explicación de conceptos
 - Recomendación de material de estudio
 
-Los agentes interactúan con el usuario a través de la API de **OpenAI** para proporcionar respuestas en tiempo real según la funcionalidad seleccionada.
+Los agentes interactúan con el usuario en una app creada con streamlit a través de la API de **OpenAI** para proporcionar respuestas en tiempo real según la funcionalidad seleccionada.
 
 
 ## Tecnologías Utilizadas
@@ -75,6 +75,5 @@ Dependiendo de la opción seleccionada, la aplicación:
 ### 5. Formateo de Respuestas
 La función `format_response(text)` se encarga de limpiar y dar formato a la respuesta generada por el modelo. Si la salida es JSON, intenta formatearla adecuadamente.
 
-## Conclusión
-Este asistente de aprendizaje basado en inteligencia artificial facilita el estudio y aprendizage de Data Science mediante una interfaz intuitiva y funcionalidades diseñadas para mejorar la comprensión y evaluación de conocimientos.
+
 
