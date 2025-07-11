@@ -23,7 +23,7 @@ def create_agents():
         backstory="Especialista en evaluación educativa con un profundo conocimiento en ciencia de datos.",
         verbose=True,
         allow_delegation=False,
-        model="gpt-3.5-turbo"
+        model="gpt-4.1"
     )
     
     test_evaluator = Agent(
@@ -32,7 +32,7 @@ def create_agents():
         backstory="Profesor con experiencia en la evaluación de exámenes de Data Science.",
         verbose=True,
         allow_delegation=False,
-        model="gpt-3.5-turbo"
+        model="gpt-4.1"
     )
     
     flashcard_generator = Agent(
@@ -41,7 +41,7 @@ def create_agents():
         backstory="Experto en técnicas de aprendizaje activo y retención de información.",
         verbose=True,
         allow_delegation=False,
-        model="gpt-3.5-turbo"
+        model="gpt-4.1"
     )
     
     concept_explainer = Agent(
@@ -50,7 +50,7 @@ def create_agents():
         backstory="Docente apasionado por simplificar temas complejos.",
         verbose=True,
         allow_delegation=False,
-        model="gpt-3.5-turbo"
+        model="gpt-4.1"
     )
 
     tutor_personalized = Agent(
@@ -59,7 +59,7 @@ def create_agents():
         backstory="Mentor en aprendizaje adaptativo, capaz de seleccionar recursos óptimos para cada estudiante.",
         verbose=True,
         allow_delegation=False,
-        model="gpt-3.5-turbo"
+        model="gpt-4.1"
     )
     
     return {
