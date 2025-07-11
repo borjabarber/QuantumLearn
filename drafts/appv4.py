@@ -5,7 +5,7 @@ from openai import OpenAI
 import json
 
 # Configuración de la página
-st.set_page_config(page_title="QuantumLearn Asistente de Aprendizaje", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="QuantumLearn Asistente de Aprendizaje", page_icon="��", layout="wide")
 
 # Título principal
 st.title("Asistente de Aprendizaje Data Science")
@@ -87,18 +87,22 @@ agents = create_agents()
 
 # Función para formatear la respuesta
 def format_response(text):
+    # Convertir CrewOutput a string si es necesario
     if hasattr(text, 'raw'):
         text = str(text.raw)
     else:
         text = str(text)
     
+    # Eliminar marcadores de "Human:" o "Assistant:" si existen
     if "Human:" in text:
         text = text.split("Human:")[-1]
     if "Assistant:" in text:
         text = text.split("Assistant:")[-1]
     
+    # Limpiar el texto
     text = text.strip()
     
+    # Si el texto parece ser JSON, intentar formatearlo
     if text.startswith("{") or text.startswith("["):
         try:
             return json.loads(text)
@@ -107,7 +111,7 @@ def format_response(text):
     
     return text
 
-# Funcionalidad: Generador de examenes
+# Lógica principal basada en la selección
 if option == "Generador de examenes":
     st.header("🎯 Generador de Exámenes")
     tema = st.text_input("Ingresa el tema específico del examen:")
@@ -125,50 +129,10 @@ if option == "Generador de examenes":
                 tasks=[task]
             )
             result = crew.kickoff()
-            formatted = format_response(result)
             st.success("¡Examen generado!")
-            st.markdown("---")
-            st.markdown(formatted)
-
-            # Guardar preguntas en session_state
-            if isinstance(formatted, str):
-                preguntas = [line.strip() for line in formatted.split('\n') if line.strip()]
-                st.session_state["preguntas_generadas"] = preguntas
-
-# Funcionalidad: Evaluador de respuestas
-elif option == "Evaluador de respuestas":
-    st.header("📝 Evaluador de Respuestas")
-    
-    if "preguntas_generadas" in st.session_state:
-        st.markdown("Selecciona una pregunta generada anteriormente o escribe una nueva:")
-        pregunta_opciones = st.session_state["preguntas_generadas"]
-        pregunta = st.selectbox("Preguntas guardadas:", ["Escribir manualmente"] + pregunta_opciones)
-    else:
-        st.warning("No hay preguntas generadas aún. Ve a la sección 'Generador de examenes' para crear preguntas.")
-        pregunta = "Escribir manualmente"
-
-    if pregunta == "Escribir manualmente":
-        pregunta = st.text_area("Ingresa la pregunta manualmente:")
-
-    respuesta = st.text_area("Ingresa tu respuesta:")
-
-    if st.button("Evaluar"):
-        with st.spinner("Evaluando respuesta..."):
-            task = Task(
-                description=f"Evalúa la siguiente respuesta a la pregunta: '{pregunta}'\nRespuesta: {respuesta}\n\nFormatea tu evaluación usando el siguiente esquema markdown:\n\n**Puntuación**: [X/10]\n**Fortalezas**:\n- punto 1\n- punto 2\n\n**Áreas de mejora**:\n- punto 1\n- punto 2\n\n**Recomendaciones**:\n[tus recomendaciones]",
-                agent=agents["test_evaluator"],
-                expected_output="Evaluación detallada de la respuesta con retroalimentación constructiva y sugerencias de mejora."
-            )
-            crew = Crew(
-                agents=[agents["test_evaluator"]],
-                tasks=[task]
-            )
-            result = crew.kickoff()
-            st.success("¡Evaluación completada!")
             st.markdown("---")
             st.markdown(format_response(result))
 
-# Funcionalidad: Flashcards
 elif option == "Flashcards":
     st.header("📚 Generador de Flashcards")
     tema = st.text_input("Ingresa el tema para las flashcards:")
@@ -190,7 +154,6 @@ elif option == "Flashcards":
             st.markdown("---")
             st.markdown(format_response(result))
 
-# Funcionalidad: Traductor de conceptos
 elif option == "Traductor de conceptos":
     st.header("🎓 Traductor de conceptos")
     concepto = st.text_input("¿Qué concepto de Data Science quieres que te explique?")
@@ -211,7 +174,27 @@ elif option == "Traductor de conceptos":
             st.markdown("---")
             st.markdown(format_response(result))
 
-# Funcionalidad: Recomendador de material
+elif option == "Evaluador de respuestas":
+    st.header("📝 Evaluador de Respuestas")
+    pregunta = st.text_area("Ingresa la pregunta:")
+    respuesta = st.text_area("Ingresa tu respuesta:")
+    
+    if st.button("Evaluar"):
+        with st.spinner("Evaluando respuesta..."):
+            task = Task(
+                description=f"Evalúa la siguiente respuesta a la pregunta: '{pregunta}'\nRespuesta: {respuesta}\n\nFormatea tu evaluación usando el siguiente esquema markdown:\n\n**Puntuación**: [X/10]\n**Fortalezas**:\n- punto 1\n- punto 2\n\n**Áreas de mejora**:\n- punto 1\n- punto 2\n\n**Recomendaciones**:\n[tus recomendaciones]",
+                agent=agents["test_evaluator"],
+                expected_output="Evaluación detallada de la respuesta con retroalimentación constructiva y sugerencias de mejora."
+            )
+            crew = Crew(
+                agents=[agents["test_evaluator"]],
+                tasks=[task]
+            )
+            result = crew.kickoff()
+            st.success("¡Evaluación completada!")
+            st.markdown("---")
+            st.markdown(format_response(result))
+
 elif option == "Recomendador de Material":
     st.header("📚 Recomendación de Material")
     tema = st.text_input("¿Sobre qué tema necesitas recomendaciones?")
@@ -249,3 +232,6 @@ elif option == "Recomendador de Material":
             st.success("¡Recomendaciones generadas!")
             st.markdown("---")
             st.markdown(format_response(result))
+
+
+            #streamlit run app.py 
